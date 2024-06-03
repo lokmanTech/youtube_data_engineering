@@ -71,7 +71,7 @@ Days ~ Month: Historical
 
 -->
 
-**Datasets from YouTube**
+**Datasets from YouTube taken from Kaggle by Mitchell J.**
 - Top trending videos
 - What is "Trending"?
       1. YouTube uses factors, including users interactions, e.g number of views, shares, comments and likes. Not the most-viewed videos overall for the calendarr year

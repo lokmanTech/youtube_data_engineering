@@ -24,7 +24,7 @@ No. 1 - google.com
 No. 2 - youtube.com
 No. 3 - facebook.com
 
-*source: [Exploding Topics - Most Visited Website in The World (June 2024), by Josh Howarth, published on 1st June 2024](https://explodingtopics.com/blog/most-visited-websites)
+*source: [Exploding Topics - Most Visited Website in The World (June 2024), by Josh Howarth, published on 1st June 2024](https://explodingtopics.com/blog/most-visited-websites)*
 
 **Goal and Success Criteria**
 

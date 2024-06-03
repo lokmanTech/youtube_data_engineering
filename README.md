@@ -1,2 +1,2 @@
 # youtube_data_analysis
-A comprehensive project for analyzing YouTube data to gain insights into channel performance, video trends, and audience engagement. Utilizing Python, Pandas, and YouTube API to collect, process, and visualize data. This repository includes scripts, notebooks, and documentation to guide users through various analyses and data visualizations.
+An end-to-end data engineering project for analyzing YouTube data, encompassing data ingestion, data lake formation, cloud deployment on AWS, ETL design, scalability, and reporting. This repository includes scripts, workflows, and documentation to guide users through each phase of the project, leveraging Python, AWS services, and data engineering best practices.

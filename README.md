@@ -50,7 +50,7 @@ How my customer will measure success?
 <!-- 
 Note for myself by doing this project
 - To build a data lake from scratch in Amazon S3: Joining semi-structure and structure data.
-- Lake House architecture design: Best practices --> cost and performance.
+- Lake House architecture design: Best practices > cost and performance.
 - Data Lake vs. Data Warehouse.
 - Data Lake design in layers, partitioned for cost performance: e.g landing, cleansed as SSOT, reporting for BI users. And, WORM model/write Once Read Many.
 - AWS Data Catalogue.
@@ -59,16 +59,12 @@ Note for myself by doing this project
 - SQL using Amazon Athena and Spark SQL: i.e impact of querying the optimized data layers.
 - Ingest changes incrementally and schema evolution.
 - BI Dashboards in Amazon QuickSight.
--->
   
-<!--
 **What is Big Data**
 - massive data sets, with varied and complex structure
 - with the difficulties of storing and analysing
 - visualizing for further processes or results
--->
 
-<!--
 **Timely decision require new data in minutes**
 Data loses value quickly over time, below is the data being valued into decision-making:
 -------Time-critical decisions-------

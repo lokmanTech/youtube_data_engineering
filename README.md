@@ -88,7 +88,8 @@ Days ~ Month: Historical
 In cost wise, it is efficient to use Cloud Based. In this project we will explore on Amazon Web Services (AWS) which the leading cloud platform next to Microsoft. We can call it one-stop center for cloud services, since many services they offers.
 
 **Log in into your AWS Account under IAM account**
-
+1. Create an [AWS Account]([https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqazB5SkRxdGFNZUk0X24tQ1k3dXpwLVVjcVc5QXxBQ3Jtc0tsNUx2QVBSQTZPSWtFbFQ5YmwzcDkySzFSZUlNV2QwMWVsVnRUN3RBVUF0ekdoTWhpMjNPeE9yZnY4OFlDSlJzczJHNDBoSVB3d2VwODlhSHAtWXE4S1gtWmExTjA5TUZxOTVVVzhhNWNIa3Z5UGpoOA&q=https%3A%2F%2Faws.amazon.com%2Fpremiumsupport%2Fknowledge-center%2Fcreate-and-activate-aws-account%2F&v=yZKJFKu49Dk](https://portal.aws.amazon.com/billing/signup#/start/email)).
+2. 
 
 
 

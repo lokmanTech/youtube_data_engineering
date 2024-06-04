@@ -48,7 +48,6 @@ How my customer will measure success?
 `Reporting`: Build a Business intelligence tier, include Dashboards.
 
 <!-- 
-
 Note for myself by doing this project
 
 - To build a data lake from scratch in Amazon S3: Joining semi-structure and structure data.
@@ -85,8 +84,6 @@ Seconds: Actionable
 Minutes ~ Hour: Reactive
 
 Days ~ Month: Historical
-
-
 -->
 
 **Datasets from YouTube taken from Kaggle by Mitchell J.**

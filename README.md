@@ -1,12 +1,44 @@
 # youtube_data_engineering
 An end-to-end data engineering project for analyzing YouTube data, encompassing data ingestion, data lake formation, cloud deployment on AWS, ETL design, scalability, and reporting. This repository includes scripts, workflows, and documentation to guide users through each phase of the project, leveraging Python, AWS services, and data engineering best practices.
 
+<!--
 ### Table of content
 |||
 |:-:|:-:|
 |||
+-->
 
 ### Getting Started**
+1. Data Ingestion - Build a mechanism to ingest data from different sources.
+2. ETL System - We are getting data in raw format, transforming this data into the proper format.
+3. Data lake - We will be getting data from multiple sources so we need centralized repo to store them.
+4. Scalability - As the size of our data increases, we need to make sure our system scales with it.
+5. Cloud - We can't process vast amounts of data on our local computer so we need to use the cloud, in this case, we will use AWS.
+6. Reporting - Build a dashboard to get answers to the question we asked earlier.
+
+**Amazon Web Services (AWS) Overview**
+`Amazon S3`: Amazon Simple Storage Service (S3) is an object storage service offering industry-leading scalability, data availability, security, and performance.
+
+`AWS IAM`: AWS Identity and Access Management (IAM) enables secure management of access to AWS services and resources. It allows for the creation and control of AWS users and permissions.
+
+`Amazon QuickSight`: QuickSight is a scalable, serverless, and embeddable business intelligence (BI) service powered by machine learning. It is designed to provide fast and actionable insights from your data.
+
+`AWS Glue`: Glue is a serverless data integration service that simplifies the process of discovering, preparing, and combining data for analytics, machine learning, and application development.
+
+`AWS Lambda`: Lambda is a serverless computing service that lets developers run code without provisioning or managing servers. It automatically scales and manages the compute resources needed to run your code.
+
+`AWS Athena`: Athena is an interactive query service that makes it easy to analyze data directly in Amazon S3 using standard SQL. There is no need to move your data; it remains in S3.
+
+**Dataset Used**
+
+The dataset utilized is from Kaggle and contains comprehensive statistics on daily popular YouTube videos over an extended period. It includes up to 200 trending videos published daily across various regions, with each region's data stored in its own CSV file. The dataset encompasses several attributes such as video title, channel title, publication time, tags, views, likes, dislikes, description, and comment count. Additionally, it features a `category_id` field specific to each region, which is detailed in the accompanying JSON file.
+
+You can access the dataset [here](https://www.kaggle.com/datasets/datasnaek/youtube-new).
+
+
+## Architecture Diagram
+
+<p align="center"><img src="img/architecture"></p>
 
 **Project Overview**
 
@@ -15,22 +47,16 @@ The requirement from `(simulated)` customer:
 - Main advertising channel: `Youtube`
 - Initial question to answers:
 
-      1. "How to categorise videos, based on their comments and statistics?"
+1. "How to categorise videos, based on their comments and statistics?"
+2. "What factors affect houw popular a YouTube video `will be`?"
   
-      2. "What factors affect houw popular a YouTube video `will be`?"
-  
-**Why Youtube?**
+**Why Youtube, as leading platform for advertisement usage?**
 
-Top three most-visited websites (monthly)
-
-No. 1 - google.com
-
-No. 2 - youtube.com
-
-No. 3 - facebook.com
+Top three most-visited websites (monthly) after google.com
 
 *source: [Exploding Topics - Most Visited Website in The World (June 2024), by Josh Howarth, published on 1st June 2024](https://explodingtopics.com/blog/most-visited-websites)*
 
+<!--
 **Goal and Success Criteria**
 
 How my customer will measure success?
@@ -47,7 +73,6 @@ How my customer will measure success?
 
 `Reporting`: Build a Business intelligence tier, include Dashboards.
 
-<!-- 
 Note for myself by doing this project
 - To build a data lake from scratch in Amazon S3: Joining semi-structure and structure data.
 - Lake House architecture design: Best practices > cost and performance.
@@ -73,24 +98,28 @@ Seconds: Actionable
 -------Traditional "batch" business intelligence-------
 Minutes ~ Hour: Reactive
 Days ~ Month: Historical
--->
 
 **Datasets from YouTube taken from Kaggle by Mitchell J.**
 - Top trending videos
 - What is "Trending"?
 
-      1. YouTube uses factors, including users interactions, e.g number of views, shares, comments and likes. Not the most-viewed videos overall for the calendarr year
+1. YouTube uses factors, including users interactions, e.g number of views, shares, comments and likes. Not the most-viewed videos overall for the calendar year
 
 - Source: Kaggle. Data collected using YouTube API. [Click here](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbEhQUy01eWpUSnRpVTRMVkl6Y09RcGkxVEljd3xBQ3Jtc0ttZUZ4a0xaZ0NkVjJtOGpFWHVlRDVjS1d1NDJUaFpaVnQwUGlSemdieW84N29vZUdlT25FOWhpZ0hLbjMwSE10SnF6M3JvbHZ2TkNZM1h0ZHFPdWQ0eVdneXUtM0lKbm4tMERlWGh5NVNfZWlGT1Uxdw&q=https%3A%2F%2Fwww.kaggle.com%2Fdatasnaek%2Fyoutube-new&v=yZKJFKu49Dk) to view & download the datasets getting from Kaggle.
+-->
 
 **On-premise Data Centre vs. Cloud Data Centre**
 
 In cost wise, it is efficient to use Cloud Based. In this project we will explore on Amazon Web Services (AWS) which the leading cloud platform next to Microsoft. We can call it one-stop center for cloud services, since many services they offers.
 
+### Data Engineering Process
+
 **Log in into your AWS Account under IAM account**
-1. Create an [AWS Account](https://portal.aws.amazon.com/billing/signup#/start/email). If, this is your first time login into AWS Dashboard Account, to access the services, you need to activate, by inserting payment method then follow the verification steps. If you already have an account, just sign in into your IAM role account, if you don't have, follow next instruction.
-2. Again if you already have an IAM role account you can skip this step. to create and IAM role account, search and click `IAM`, then click  `Users`, then click `add users`. during IAM account setup, here are some component keys that you need to focus on; username, IAM role (programmatic access), passwords, attached existing policies (select AdministratorAccess), download the csv (and save it at secure location). Once IAM role account created, and create new access key and download the csv file once you completed creating access key ( access key, allowing us to pair with other tools to use with the account). Now, you have successfully created the IAM role account together with the secret key, login the IAM account via link given in the csv. that you download earlier.
-3. 
+1. `CREATE AN AWS ACCOUNT`: Click [here](https://portal.aws.amazon.com/billing/signup#/start/email). If, this is your first time login into AWS Dashboard Account, to access the services, you need to activate, by inserting payment method then follow the verification steps. If you already have an account, just sign in into your IAM role account, if you don't have, follow next instruction.
+2. `CREATE AWS IAM ROLE ACCOUNT`: Again if you already have an IAM role account you can skip this step. to create and IAM role account, search and click `IAM`, then click  `Users`, then click `add users`. during IAM account setup, here are some component keys that you need to focus on; username, IAM role (programmatic access), passwords, attached existing policies (select AdministratorAccess), download the csv (and save it at secure location). Once IAM role account created, and create new access key and download the csv file once you completed creating access key ( access key, allowing us to pair with other tools to use with the account). Now, you have successfully created the IAM role account together with the secret key, login the IAM account via link given in the csv. that you download earlier.
+3. `SETTING UP AWS CLI ON YOUR DEVICE`: You can link your device to install [AWS CLI](https://aws.amazon.com/cli/) either MAC, Windows or Linux. Setting this up will help you fasten up the process. Then, configure your CMD (if using Windows) or Terminal (if using MAC) by inserting command `aws configure` then the system will prompt question like access key, secret access key, region.
+4. `SETTING UP AWS S3 BUCKET`: Next, you can go to AWS console (under IAM role account), then create new S3 Bucket. you can name it whatever you want, in this project, I've named my bucket `my-yt-data-analysis-bucket`.
+5. 
 
 
 

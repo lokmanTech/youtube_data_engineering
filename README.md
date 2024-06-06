@@ -8,7 +8,7 @@ An end-to-end data engineering project for analyzing YouTube data, encompassing 
 |||
 -->
 
-### Getting Started**
+### Getting Started
 1. Data Ingestion - Build a mechanism to ingest data from different sources.
 2. ETL System - We are getting data in raw format, transforming this data into the proper format.
 3. Data lake - We will be getting data from multiple sources so we need centralized repo to store them.
@@ -16,7 +16,7 @@ An end-to-end data engineering project for analyzing YouTube data, encompassing 
 5. Cloud - We can't process vast amounts of data on our local computer so we need to use the cloud, in this case, we will use AWS.
 6. Reporting - Build a dashboard to get answers to the question we asked earlier.
 
-**Amazon Web Services (AWS) Overview**
+### Amazon Web Services (AWS) Overview
 `Amazon S3`: Amazon Simple Storage Service (S3) is an object storage service offering industry-leading scalability, data availability, security, and performance.
 
 `AWS IAM`: AWS Identity and Access Management (IAM) enables secure management of access to AWS services and resources. It allows for the creation and control of AWS users and permissions.
@@ -29,18 +29,18 @@ An end-to-end data engineering project for analyzing YouTube data, encompassing 
 
 `AWS Athena`: Athena is an interactive query service that makes it easy to analyze data directly in Amazon S3 using standard SQL. There is no need to move your data; it remains in S3.
 
-**Dataset Used**
+### Dataset Used
 
 The dataset utilized is from Kaggle and contains comprehensive statistics on daily popular YouTube videos over an extended period. It includes up to 200 trending videos published daily across various regions, with each region's data stored in its own CSV file. The dataset encompasses several attributes such as video title, channel title, publication time, tags, views, likes, dislikes, description, and comment count. Additionally, it features a `category_id` field specific to each region, which is detailed in the accompanying JSON file.
 
 You can access the dataset [here](https://www.kaggle.com/datasets/datasnaek/youtube-new).
 
 
-## Architecture Diagram
+### Architecture Diagram
 
 <p align="center"><img src="img/architecture"></p>
 
-**Project Overview**
+### Project Overview
 
 The requirement from `(simulated)` customer:
 - Launching new data-driven campaign
@@ -52,7 +52,7 @@ The requirement from `(simulated)` customer:
   
 **Why Youtube, as leading platform for advertisement usage?**
 
-Top three most-visited websites (monthly) after google.com
+YouTube is on of the top three most-visited websites (monthly) after google.com
 
 *source: [Exploding Topics - Most Visited Website in The World (June 2024), by Josh Howarth, published on 1st June 2024](https://explodingtopics.com/blog/most-visited-websites)*
 
@@ -108,13 +108,12 @@ Days ~ Month: Historical
 - Source: Kaggle. Data collected using YouTube API. [Click here](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbEhQUy01eWpUSnRpVTRMVkl6Y09RcGkxVEljd3xBQ3Jtc0ttZUZ4a0xaZ0NkVjJtOGpFWHVlRDVjS1d1NDJUaFpaVnQwUGlSemdieW84N29vZUdlT25FOWhpZ0hLbjMwSE10SnF6M3JvbHZ2TkNZM1h0ZHFPdWQ0eVdneXUtM0lKbm4tMERlWGh5NVNfZWlGT1Uxdw&q=https%3A%2F%2Fwww.kaggle.com%2Fdatasnaek%2Fyoutube-new&v=yZKJFKu49Dk) to view & download the datasets getting from Kaggle.
 -->
 
-**On-premise Data Centre vs. Cloud Data Centre**
+### On-premise Data Centre vs. Cloud Data Centre
 
 In cost wise, it is efficient to use Cloud Based. In this project we will explore on Amazon Web Services (AWS) which the leading cloud platform next to Microsoft. We can call it one-stop center for cloud services, since many services they offers.
 
 ### Data Engineering Process
 
-**Log in into your AWS Account under IAM account**
 1. `CREATE AN AWS ACCOUNT`: Click [here](https://portal.aws.amazon.com/billing/signup#/start/email). If, this is your first time login into AWS Dashboard Account, to access the services, you need to activate, by inserting payment method then follow the verification steps. If you already have an account, just sign in into your IAM role account, if you don't have, follow next instruction.
 2. `CREATE AWS IAM ROLE ACCOUNT`: Again if you already have an IAM role account you can skip this step. to create and IAM role account, search and click `IAM`, then click  `Users`, then click `add users`. during IAM account setup, here are some component keys that you need to focus on; username, IAM role (programmatic access), passwords, attached existing policies (select AdministratorAccess), download the csv (and save it at secure location). Once IAM role account created, and create new access key and download the csv file once you completed creating access key ( access key, allowing us to pair with other tools to use with the account). Now, you have successfully created the IAM role account together with the secret key, login the IAM account via link given in the csv. that you download earlier.
 3. `SETTING UP AWS CLI ON YOUR DEVICE`: You can link your device to install [AWS CLI](https://aws.amazon.com/cli/) either MAC, Windows or Linux. Setting this up will help you fasten up the process. Then, configure your CMD (if using Windows) or Terminal (if using MAC) by inserting command `aws configure` then the system will prompt question like access key, secret access key, region.

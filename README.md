@@ -44,7 +44,7 @@ You can access the dataset [here](https://www.kaggle.com/datasets/datasnaek/yout
 
 ### Architecture Diagram
 
-<p align="center"><img src="img/architecture"></p>
+<p align="center"><img src="img/architecture.jpeg"></p>
 
 ### Project Overview
 

@@ -8,13 +8,19 @@ An end-to-end data engineering project for analyzing YouTube data, encompassing 
 |||
 -->
 
-### Getting Started
-1. Data Ingestion - Build a mechanism to ingest data from different sources.
-2. ETL System - We are getting data in raw format, transforming this data into the proper format.
-3. Data lake - We will be getting data from multiple sources so we need centralized repo to store them.
-4. Scalability - As the size of our data increases, we need to make sure our system scales with it.
-5. Cloud - We can't process vast amounts of data on our local computer so we need to use the cloud, in this case, we will use AWS.
-6. Reporting - Build a dashboard to get answers to the question we asked earlier.
+### Data Management Strategy
+
+**Data Ingestion**: Develop a mechanism to efficiently ingest data from various sources.
+
+**ETL System**: Implement an ETL (Extract, Transform, Load) process to convert raw data into a usable format.
+
+**Data Lake**: Establish a centralized repository to store data from multiple sources, ensuring easy access and management.
+
+**Scalability**: Design the system to scale seamlessly as data volume increases.
+
+**Cloud Integration**: Utilize cloud services, specifically AWS, to handle the processing of large datasets that exceed local computing capabilities.
+
+**Reporting**: Create a dashboard to provide insights and answers to the predefined questions.
 
 ### Amazon Web Services (AWS) Overview
 `Amazon S3`: Amazon Simple Storage Service (S3) is an object storage service offering industry-leading scalability, data availability, security, and performance.

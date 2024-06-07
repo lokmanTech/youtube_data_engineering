@@ -50,6 +50,12 @@ You can access the dataset [here](https://www.kaggle.com/datasets/datasnaek/yout
 
 <p align="center"><img src="img/LakeHouseArchitecture.png"></p>
 
+### AWS Glue Catalog Diagram
+
+<p align="center"><img src="img/AWSGlueCatalog.png"></p>
+
+<p align="center"><img src="img/AWSGlueCatalogExplanation.png"></p>
+
 ### Project Overview
 
 The requirement from `(simulated)` customer:
@@ -152,7 +158,8 @@ aws s3 cp USvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/re
 
 *additional notes: as for linux or mac we can use `ls` command on the CLI to list the files, but in windows use this command `dir /s /b /o:gn`. You're welcome.
 
-7. 
+7. `IMPLEMENTING LAKE HOUSE ARCHITECTURE`: Before we go deep, we need to understand the key elements of the lake house architecture. Scalable Data Lakes, Purpose-built Data Services, Seamless Data Movement, Unified Governance & Performance and Cost-effective. Next,
+8. 
 
 
 

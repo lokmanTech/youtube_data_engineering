@@ -46,6 +46,10 @@ You can access the dataset [here](https://www.kaggle.com/datasets/datasnaek/yout
 
 <p align="center"><img src="img/architecture.jpeg"></p>
 
+### Lake House Architecture Diagram
+
+<p align="center"><img src="img/LakeHouseArchitecture.png"></p>
+
 ### Project Overview
 
 The requirement from `(simulated)` customer:
@@ -146,9 +150,9 @@ aws s3 cp RUvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/re
 aws s3 cp USvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/region=us/
 ```
 
+*additional notes: as for linux or mac we can use `ls` command on the CLI to list the files, but in windows use this command `dir /s /b /o:gn`. You're welcome.
 
-
-
+7. 
 
 
 

@@ -125,14 +125,26 @@ In cost wise, it is efficient to use Cloud Based. In this project we will explor
 3. `SETTING UP AWS CLI ON YOUR DEVICE`: You can link your device to install [AWS CLI](https://aws.amazon.com/cli/) either MAC, Windows or Linux. Setting this up will help you fasten up the process. Then, configure your CMD (if using Windows) or Terminal (if using MAC) by inserting command `aws configure` then the system will prompt question like access key, secret access key, region.
 4. `SETTING UP AWS S3 BUCKET`: Next, you can go to AWS console (under IAM role account), then create new S3 Bucket. you can name it whatever you want, in this project, I've named my bucket `my-yt-data-analysis-bucket`.
 5. `DOWNLOAD FROM KAGGLE`: Now, we can proceed to download the applicable data from kaggle, what I've mentioned earlier, download [here](https://www.kaggle.com/datasets/datasnaek/youtube-new). Save it at proper designated folder. Then, direct your `terminal` or `cmd` to the designated folder that you've just save ealier. using `cd` command to change your directory.
-6. `UPLOAD FILE FROM YOUR DEVICE TO S3 BUCKET`: Now, as your command line interface in the at correct directory to upload the files. use the command below to start upload json files.
+6. `UPLOAD FILE FROM YOUR DEVICE TO S3 BUCKET`: Now, as your command line interface in the at correct directory to upload the files. use the command below to start upload json & csv files. Copy the command below and paste on the command line interface.
 
 ```shell
 aws s3 cp . s3://my-yt-data-analysis-bucket/youtube/raw_statistics_reference_data/ --recursive --exclude "*" --include "*.json"
 ```
 
+Next, since the csv files information is from differents region, so each file is design to go onto diferrent directory.
 
-
+```shell
+aws s3 cp CAvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/region=ca/
+aws s3 cp DEvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/region=de/
+aws s3 cp FRvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/region=fr/
+aws s3 cp GBvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/region=gb/
+aws s3 cp INvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/region=in/
+aws s3 cp JPvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/region=jp/
+aws s3 cp KRvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/region=kr/
+aws s3 cp MXvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/region=mx/
+aws s3 cp RUvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/region=ru/
+aws s3 cp USvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/region=us/
+```
 
 
 

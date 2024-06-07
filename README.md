@@ -124,7 +124,12 @@ In cost wise, it is efficient to use Cloud Based. In this project we will explor
 2. `CREATE AWS IAM ROLE ACCOUNT`: Again if you already have an IAM role account you can skip this step. to create and IAM role account, search and click `IAM`, then click  `Users`, then click `add users`. during IAM account setup, here are some component keys that you need to focus on; username, IAM role (programmatic access), passwords, attached existing policies (select AdministratorAccess), download the csv (and save it at secure location). Once IAM role account created, and create new access key and download the csv file once you completed creating access key ( access key, allowing us to pair with other tools to use with the account). Now, you have successfully created the IAM role account together with the secret key, login the IAM account via link given in the csv. that you download earlier.
 3. `SETTING UP AWS CLI ON YOUR DEVICE`: You can link your device to install [AWS CLI](https://aws.amazon.com/cli/) either MAC, Windows or Linux. Setting this up will help you fasten up the process. Then, configure your CMD (if using Windows) or Terminal (if using MAC) by inserting command `aws configure` then the system will prompt question like access key, secret access key, region.
 4. `SETTING UP AWS S3 BUCKET`: Next, you can go to AWS console (under IAM role account), then create new S3 Bucket. you can name it whatever you want, in this project, I've named my bucket `my-yt-data-analysis-bucket`.
-5. 
+5. `DOWNLOAD FROM KAGGLE`: Now, we can proceed to download the applicable data from kaggle, what I've mentioned earlier, download [here](https://www.kaggle.com/datasets/datasnaek/youtube-new). Save it at proper designated folder. Then, direct your `terminal` or `cmd` to the designated folder that you've just save ealier. using `cd` command to change your directory.
+6. `UPLOAD FILE FROM YOUR DEVICE TO S3 BUCKET`: Now, as your command line interface in the at correct directory to upload the files. use the command below to start upload json files.
+
+```shell
+aws s3 cp . s3://my-yt-data-analysis-bucket/youtube/raw_statistics_reference_data/ --recursive --exclude "*" --include "*.json"
+```
 
 
 

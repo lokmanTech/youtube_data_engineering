@@ -1,13 +1,6 @@
 # youtube_data_engineering
 An end-to-end data engineering project for analyzing YouTube data, encompassing data ingestion, data lake formation, cloud deployment on AWS, ETL design, scalability, and reporting. This repository includes scripts, workflows, and documentation to guide users through each phase of the project, leveraging Python, AWS services, and data engineering best practices.
 
-<!--
-### Table of content
-|||
-|:-:|:-:|
-|||
--->
-
 ### Data Management Strategy
 
 **Data Ingestion**: Develop a mechanism to efficiently ingest data from various sources.
@@ -72,58 +65,6 @@ YouTube is on of the top three most-visited websites (monthly) after google.com
 
 *source: [Exploding Topics - Most Visited Website in The World (June 2024), by Josh Howarth, published on 1st June 2024](https://explodingtopics.com/blog/most-visited-websites)*
 
-<!--
-**Goal and Success Criteria**
-
-How my customer will measure success?
-
-`Data Ingestion`: Ingest data, one-offs and incrementally.
-
-`Data Lake`: Design and build a new Data Lake architecture.
-
-`AWS Cloud`: AWS as the Cloud provider.
-
-`ETL Desing`: Extract, transform and load data efficiently.
-
-`Scalability`: The data architecture should scale efficiently.
-
-`Reporting`: Build a Business intelligence tier, include Dashboards.
-
-Note for myself by doing this project
-- To build a data lake from scratch in Amazon S3: Joining semi-structure and structure data.
-- Lake House architecture design: Best practices > cost and performance.
-- Data Lake vs. Data Warehouse.
-- Data Lake design in layers, partitioned for cost performance: e.g landing, cleansed as SSOT, reporting for BI users. And, WORM model/write Once Read Many.
-- AWS Data Catalogue.
-- ETL in AWS Glue Spark jobs: Amazon Sagemaker Jupyter Notebooks.
-- Amazon SNS for alerting.
-- SQL using Amazon Athena and Spark SQL: i.e impact of querying the optimized data layers.
-- Ingest changes incrementally and schema evolution.
-- BI Dashboards in Amazon QuickSight.
-  
-**What is Big Data**
-- massive data sets, with varied and complex structure
-- with the difficulties of storing and analysing
-- visualizing for further processes or results
-
-**Timely decision require new data in minutes**
-Data loses value quickly over time, below is the data being valued into decision-making:
--------Time-critical decisions-------
-Real-time: Preventive/Predictive
-Seconds: Actionable
--------Traditional "batch" business intelligence-------
-Minutes ~ Hour: Reactive
-Days ~ Month: Historical
-
-**Datasets from YouTube taken from Kaggle by Mitchell J.**
-- Top trending videos
-- What is "Trending"?
-
-1. YouTube uses factors, including users interactions, e.g number of views, shares, comments and likes. Not the most-viewed videos overall for the calendar year
-
-- Source: Kaggle. Data collected using YouTube API. [Click here](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbEhQUy01eWpUSnRpVTRMVkl6Y09RcGkxVEljd3xBQ3Jtc0ttZUZ4a0xaZ0NkVjJtOGpFWHVlRDVjS1d1NDJUaFpaVnQwUGlSemdieW84N29vZUdlT25FOWhpZ0hLbjMwSE10SnF6M3JvbHZ2TkNZM1h0ZHFPdWQ0eVdneXUtM0lKbm4tMERlWGh5NVNfZWlGT1Uxdw&q=https%3A%2F%2Fwww.kaggle.com%2Fdatasnaek%2Fyoutube-new&v=yZKJFKu49Dk) to view & download the datasets getting from Kaggle.
--->
-
 ### On-premise Data Centre vs. Cloud Data Centre
 
 In cost wise, it is efficient to use Cloud Based. In this project we will explore on Amazon Web Services (AWS) which the leading cloud platform next to Microsoft. We can call it one-stop center for cloud services, since many services they offers.
@@ -159,7 +100,7 @@ aws s3 cp USvideos.csv s3://my-yt-data-analysis-bucket/youtube/raw_statistics/re
 *additional notes: as for linux or mac we can use `ls` command on the CLI to list the files, but in windows use this command `dir /s /b /o:gn`. You're welcome.
 
 7. `IMPLEMENTING LAKE HOUSE ARCHITECTURE`: Before we go deep, we need to understand the key elements of the lake house architecture. Scalable Data Lakes, Purpose-built Data Services, Seamless Data Movement, Unified Governance & Performance and Cost-effective. Next, we will setup AWS GLUE.
-8. `AWS GLUE FOR DATA INTEGRATION`: When you done uploading the files into S3 Bucket, now, go to `AWS GLUE` then click at `CRAWLER` at the left navigation pane. Create `new crawler` and name it whatever you want,  in this project I've named it as `de-yt-glue-catalog-1`,and for my case, I kept everything in default. Ensure you are using correct S3 Bucket, then create new IAM role for this AWS GLUE section.
+8. `AWS GLUE FOR DATA INTEGRATION`: When you done uploading the files into S3 Bucket, now, go to `AWS GLUE` then click at `CRAWLER` at the left navigation pane. Create `new crawler` and name it whatever you want,  in this project I've named it as `de-yt-glue-catalog-1`,and for my case, I kept everything in default. Ensure you are using correct S3 Bucket (which contain json file, in this context the directory s3://my-yt-data-analysis-bucket/youtube/raw_statistics_reference_data/, then create new IAM role for this AWS GLUE section. Now, take closer attention for this, open new tab, and go to AWS IAM, click `role` section. Create new role, the choose AWS Service and choose `Glue` for `use cases for other AWS services:`. For permission policies, select `AmazonS3FullAccess` & `AWSGlueServiceRole` then name the role. In this project I've named it as de-on-yt-glue-s3-role. Now get back to the prev tab `AWS Glue - crawler` that we left just now. refresh the `Choose the IAM role` and the select the `de-on-yt-glue-s3-role` that we just create earlier. then Create new database for this, in my case i've create `de_youtuber_raw` databases, then select the database you just created, then click next until you complete setting up the crawlers. Then select the crawler that we just created, then select `RUN Crawler`. Then once it's complete it will fetch data and create and table analysis on what the json file is all about.
 
 
 

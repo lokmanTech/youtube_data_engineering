@@ -158,7 +158,9 @@ pip install awswrangler
 14. `RECREATE THE PARQUET FILE`: Run again the lambda function with similar setting we created previously.
 15. `PLAY AROUND IN ATHENA`: AWS Athena contain features that we can fetch information from storage, in this context S3 bucket that we have been created and used in awhile, Athena use `SQL` programming language, so have familiarity in the SQL would be in handy, if you dont have any skill on that, just play along with this project.
 ```SQL
-SELECT a.title
+SELECT a.title,a.category_id,b.snippet_title FROM "de_youtube_raw"."raw_statistics" a
+INNER JOIN "db_youtube_cleaned"."cleaned_statistic_reference_data" b ON a.category_id=b.id
+where a.region='ca';
 ```
 
 

@@ -155,8 +155,11 @@ pip install awswrangler
 ```
 <p align="center"><img src="img/install-aws-wrangler.png"></p>.
 
-14. `RECREATE THE PARQUET FILE`: 
-
+14. `RECREATE THE PARQUET FILE`: Run again the lambda function with similar setting we created previously.
+15. `PLAY AROUND IN ATHENA`: AWS Athena contain features that we can fetch information from storage, in this context S3 bucket that we have been created and used in awhile, Athena use `SQL` programming language, so have familiarity in the SQL would be in handy, if you dont have any skill on that, just play along with this project.
+```SQL
+SELECT a.title
+```
 
 
 

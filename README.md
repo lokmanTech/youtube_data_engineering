@@ -103,7 +103,7 @@ Once all files uploaded into the S3 bucket, here how your S3 will looks like. <p
 
 7. `IMPLEMENTING LAKE HOUSE ARCHITECTURE`: Before we go deep, we need to understand the key elements of the lake house architecture. Scalable Data Lakes, Purpose-built Data Services, Seamless Data Movement, Unified Governance & Performance and Cost-effective. Next, we will setup AWS GLUE.
 8. `AWS GLUE FOR DATA INTEGRATION`: When you done uploading the files into S3 Bucket, now, go to `AWS GLUE` then click at `CRAWLER` at the left navigation pane. Create `new crawler` and name it whatever you want,  in this project I've named it as `de-yt-glue-catalog-1`,and for my case, I kept everything in default. Ensure you are using correct S3 Bucket (which contain json file, in this context the directory s3://my-yt-data-analysis-bucket/youtube/raw_statistics_reference_data/, then create new IAM role for this AWS GLUE section. Now, take closer attention for this, open new tab, and go to AWS IAM, click `role` section. Create new role, the choose AWS Service and choose `Glue` for `use cases for other AWS services:`. For permission policies, select `AmazonS3FullAccess` & `AWSGlueServiceRole` then name the role. In this project I've named it as de-on-yt-glue-s3-role. Now get back to the prev tab `AWS Glue - crawler` that we left just now. refresh the `Choose the IAM role` and the select the `de-on-yt-glue-s3-role` that we just create earlier. then Create new database for this, in my case i've create `de_youtuber_raw` databases, then select the database you just created, then click next until you complete setting up the crawlers. Then select the crawler that we just created, then select `RUN Crawler`. Then once it's complete it will fetch data and create and table analysis on what the json file is all about. <p align="center"><img src="img/AWSGlue.png"></p>
-9. `QUERYING WITH AMAZON ATHENA`: Next, we will go to Amazon Athena to querying the data. First, at Amazon Glue page, at the left navigation bar, open drop down menu for `Data Catalog`, then select `Tables` under Databases, Then click the table that crawler just created earlier, then at the top right corner, click `Action`, then click `View data`, then it will lead to new page, amazon Athena. What is Athena? Athena is ad-hoc query tool which use SQL programming language. Now, at the top of the bar you will popup message asking 'Before you run your first query, you need to set up a query result location in Amazon S3'. Basically, we need to create new S3 bucket to save the athena query data. <p align="center"><img src="img/AWSAthena.png"></p>. In this case I've named my new S3 bucket as `my-yt-de-athena-bucket` <p align="center"><img src="img/AWSS3-athena-bucket.png"></p>. Now, we have everything in place, we start to `RUN` the Athena, but what was the outcome? it was fail, due to our file in json is giving information in wrong format, eventhough it is correct, but based on AWS Guideline, it was not correct. <p align="center"><img src="img/AWSAthena-fail.png"></p> Here, is one part of Data Engineering process which to clean up data to make it workable, which we call it `Data Cleansing`. <p align="center"><img src="img/DataCleansing.png"></p> <p align="center"><img src="img/lightETL_JSON_to_Apache_Parquet.png"></p>
+9. `QUERYING WITH AMAZON ATHENA`: Next, we will go to Amazon Athena to querying the data. First, at Amazon Glue page, at the left navigation bar, open drop down menu for `Data Catalog`, then select `Tables` under Databases, Then click the table that crawler just created earlier, then at the top right corner, click `Action`, then click `View data`, then it will lead to new page, amazon Athena. What is Athena? Athena is ad-hoc query tool which use SQL programming language. Now, at the top of the bar you will popup message asking 'Before you run your first query, you need to set up a query result location in Amazon S3'. Basically, we need to create new S3 bucket to save the athena query data. <p align="center"><img src="img/AWSAthena.png"></p>. In this case I've named my new S3 bucket as `my-yt-de-athena-bucket` <p align="center"><img src="img/AWSS3-athena-bucket.png"></p> <p align="center"><img src="img/athena-output-s3-bucket.png"></p>. Now, we have everything in place, we start to `RUN` the Athena, but what was the outcome? it was fail, due to our file in json is giving information in wrong format, eventhough it is correct, but based on AWS Guideline, it was not correct. <p align="center"><img src="img/AWSAthena-fail.png"></p> Here, is one part of Data Engineering process which to clean up data to make it workable, which we call it `Data Cleansing`. <p align="center"><img src="img/DataCleansing.png"></p> <p align="center"><img src="img/lightETL_JSON_to_Apache_Parquet.png"></p>
 10. `LAMBDA - DATA CLEANSING PROCESS`: as part for data cleansing, I'm using aws lamda to convert from json to Apache Parquet. <p align="center"><img src="img/AWSlambda-create-function.png"></p> We will required to create new role, allowing for this operation. go to IAM page, select `role` tab at navigation left pane, then, `create new role` then select `lambda` as for service, give permission on `Amazons3FullAccess` and `AWSGlueServiceRole` create the role. <p align="center"><img src="img/AWSIAM-lambdaRole-02.png"></p> Once you have create the IAM role, go back to AWS lambda page, choose the role, that we just created earlier, then `create function`. Upon completing the setting the function, the system will forward us to the AWS lambda page. <p align="center"><img src="img/AWSLambda-py.png"></p> In this page, you will need to setup a python code which reading the file from S3, normalise, then extract the items, then write back in parquet format to S3, 
 ```python
 import awssdkpandas as wr
@@ -156,47 +156,11 @@ pip install awswrangler
 <p align="center"><img src="img/install-aws-wrangler.png"></p>.
 
 14. `RECREATE THE PARQUET FILE`: Run again the lambda function with similar setting we created previously.
-15. `ATHENA OUTPUT LOCATION`: Before we do query tasks, we need to confirm the location for the Athena output. Go to athena, then go to `Query editor`, then go to the `manage setting` tab. <p align="center"><img src="img/athena-output-s3-bucket.png"></p>.
-16. `PLAY AROUND IN ATHENA`: AWS Athena contain features that we can fetch information from storage, in this context S3 bucket that we have been created and used in awhile, Athena use `SQL` programming language, so have familiarity in the SQL would be in handy, if you dont have any skill on that, just play along with this project. In my case, I got issue which athena can't fetch information in the data, so here is my solution inserting in the query.
+15. `CREATE NEW CRAWLER FOR CLEANED DATA`: To ensure that the file just recreate fetching properly, I've run new crawler to fetch data from cleaned S3 bucket. 
+17. `PLAY AROUND IN ATHENA`: AWS Athena contain features that we can fetch information from storage, in this context S3 bucket that we have been created and used in awhile, Athena use `SQL` programming language, so have familiarity in the SQL would be in handy, if you dont have any skill on that, just play along with this project. 
 
 ```SQL
-CREATE EXTERNAL TABLE IF NOT EXISTS raw_statistics_reference_data (
-  kind string,
-  etag string,
-  id bigint,  -- Added column for id
-  snippet_channelid string,  -- Added column for snippet_channelid
-  snippet_title string,  -- Added column for snippet_title
-  snippet_assignable boolean  -- Added column for snippet_assignable
-)
-ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
-WITH SERDEPROPERTIES (
-  'serialization.format' = ','
-) 
-LOCATION 's3://my-yt-data-analysis-bucket/youtube/raw_statistics/'
-TBLPROPERTIES ('has_encrypted_data'='false');
-```
-```SQL
-CREATE EXTERNAL TABLE `raw_statistics_reference_data`(
-  `kind` string, 
-  `etag` string, 
-  `items` array<struct<kind:string,etag:string,id:string,snippet:struct<channelid:string,title:string,assignable:boolean>>>
-)
-ROW FORMAT SERDE 
-  'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe' 
-WITH SERDEPROPERTIES ( 
-  'serialization.format' = ',', 
-  'field.delim' = ',' 
-) 
-STORED AS INPUTFORMAT 
-  'org.apache.hadoop.mapred.TextInputFormat' 
-OUTPUTFORMAT 
-  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
-LOCATION
-  's3://your-s3-bucket/path/to/data/'
-TBLPROPERTIES (
-  'has_encrypted_data'='false'
-)
-
+SELECT * FROM "db_youtube_cleaned"."my_yt_de_cleansed_bucket" where id=7;
 ```
 
 

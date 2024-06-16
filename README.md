@@ -156,7 +156,8 @@ pip install awswrangler
 <p align="center"><img src="img/install-aws-wrangler.png"></p>.
 
 14. `RECREATE THE PARQUET FILE`: Run again the lambda function with similar setting we created previously.
-15. `PLAY AROUND IN ATHENA`: AWS Athena contain features that we can fetch information from storage, in this context S3 bucket that we have been created and used in awhile, Athena use `SQL` programming language, so have familiarity in the SQL would be in handy, if you dont have any skill on that, just play along with this project. In my case, I got issue which athena can't fetch information in the data, so here is my solution inserting in the query.
+15. `ATHENA OUTPUT LOCATION`: Before we do query tasks, we need to confirm the location for the Athena output. Go to athena, then go to `Query editor`, then go to the `manage setting` tab. <p align="center"><img src="img/athena-output-s3-bucket.png"></p>.
+16. `PLAY AROUND IN ATHENA`: AWS Athena contain features that we can fetch information from storage, in this context S3 bucket that we have been created and used in awhile, Athena use `SQL` programming language, so have familiarity in the SQL would be in handy, if you dont have any skill on that, just play along with this project. In my case, I got issue which athena can't fetch information in the data, so here is my solution inserting in the query.
 
 ```SQL
 CREATE EXTERNAL TABLE IF NOT EXISTS raw_statistics_reference_data (
